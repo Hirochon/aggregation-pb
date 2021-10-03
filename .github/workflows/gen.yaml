@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: apt-get
         run: |
-          apt-get update
-          apt-get install -y protobuf-compiler
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
       # 処理を高速化するために環境をキャッシュ
       - name: Cache
         uses: actions/cache@v2.1.0
