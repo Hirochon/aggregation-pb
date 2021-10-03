@@ -14,10 +14,6 @@ jobs:
         id: go
       - name: Check out
         uses: actions/checkout@v2
-      - name: apt-get
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y protobuf-compiler
       # 処理を高速化するために環境をキャッシュ
       - name: Cache
         uses: actions/cache@v2.1.0
@@ -32,6 +28,10 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: apt-get
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
       - name: initialize go
         run: go mod init github.com/Hirochon/aggregation-pb
       - name: protoc path
