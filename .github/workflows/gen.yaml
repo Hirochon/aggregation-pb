@@ -32,6 +32,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: initialize go
         run: go mod init github.com/Hirochon/aggregation-pb
+      - name: env
+        run: env
       - name: install protoc
         run: |
           go install -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
