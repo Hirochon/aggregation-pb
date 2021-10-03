@@ -26,8 +26,6 @@ jobs:
   pb:
     needs: setup
     runs-on: ubuntu-20.04
-    env:
-      PATH: $PATH:$(go env GOPATH)/bin
     steps:
       - uses: actions/checkout@v2
       - name: apt-get
@@ -42,17 +40,12 @@ jobs:
           go get -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
       # - name: protoc path
       #   run: export PATH="$PATH:$(go env GOPATH)/bin"
-      - name: pa
-        run: echo $PATH
-      - name: go env gopath
-        run: go env GOPATH
-      - name: go env
-        run: go env
-      - name: env
-        run: env
       - name: exist protoc
         run: protoc
       - name: compile protocol-buffers
+        env:
+          PATH: "$PATH:$(go env GOPATH)/bin"
+          GITHUB_ACTION_PATH: "$GITHUB_ACTION_PATH:$(go env GOPATH)/bin"
         run: make hello-gen
       - name: ls
         run: ls
