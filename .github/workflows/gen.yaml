@@ -26,6 +26,8 @@ jobs:
   pb:
     needs: setup
     runs-on: ubuntu-20.04
+    env:
+      GO111MODULE: on
     steps:
       - uses: actions/checkout@v2
       - name: initialize go
