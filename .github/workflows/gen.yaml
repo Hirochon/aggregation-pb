@@ -12,6 +12,10 @@ jobs:
         with:
           go-version: 1.17.1
         id: go
+      - name: apt-get
+        run: |
+          apt-get update
+          apt-get install -y protobuf-compiler
       - name: Check out
         uses: actions/checkout@v2
       # 処理を高速化するために環境をキャッシュ
@@ -33,8 +37,6 @@ jobs:
       - name: protoc path
         run: |
           export PATH="$PATH:$(go env GOPATH)/bin"
-      - name: env
-        run: env
       - name: get protoc
         run: |
           go get -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
