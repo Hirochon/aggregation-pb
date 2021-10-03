@@ -31,4 +31,4 @@ jobs:
       - name: compile protocol-buffers
         run: make hello-gen
       - name: ls
-      - run: ls
+        run: ls
