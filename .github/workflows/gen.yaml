@@ -48,11 +48,12 @@ jobs:
         run: ls hello/proto/
 
   dispatch-target-updated:
+    needs: pb
+    name: dispatch-target-updated
+    runs-on: ubuntu-20.04
     strategy:
       matrix:
         repo: ['Hirochon/chon-go-micro-packages']
-    name: dispatch-target-updated
-    runs-on: ubuntu-latest
     steps:
       - name: ls
         run: ls hello/proto/
