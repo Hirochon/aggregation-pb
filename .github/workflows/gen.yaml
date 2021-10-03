@@ -46,3 +46,19 @@ jobs:
             hello/proto/hello.proto
       - name: ls
         run: ls hello/proto/
+
+  dispatch-target-updated:
+    strategy:
+      matrix:
+        repo: ['Hirochon/chon-go-micro-packages']
+    name: dispatch-target-updated
+    runs-on: ubuntu-latest
+    steps:
+      - name: ls
+        run: ls hello/proto/
+      # - name: dispatch target-updated
+      #   uses: peter-evans/repository-dispatch@v1
+      #   with:
+      #     token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+      #     repository: ${{ matrix.repo }}
+      #     event-type: target-updated
