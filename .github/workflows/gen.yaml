@@ -32,8 +32,8 @@ jobs:
         run: go mod init github.com/Hirochon/aggregation-pb
       - name: install protoc
         run: |
-          go get -v google.golang.org/protobuf/cmd/protoc-gen-go
-          go get -v google.golang.org/grpc/cmd/protoc-gen-go-grpc
+          go install -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+          go install -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
       - name: exist protoc
         run: protoc
       - name: compile protocol-buffers
