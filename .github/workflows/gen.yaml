@@ -26,6 +26,9 @@ jobs:
   pb:
     needs: setup
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        repo: ['Hirochon/chon-go-micro-packages']
     steps:
       - uses: actions/checkout@v2
       - name: apt-get
@@ -46,20 +49,9 @@ jobs:
             hello/proto/hello.proto
       - name: ls
         run: ls hello/proto/
-
-  dispatch-target-updated:
-    needs: pb
-    name: dispatch-target-updated
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        repo: ['Hirochon/chon-go-micro-packages']
-    steps:
-      - name: ls
-        run: ls hello/proto/
-      # - name: dispatch target-updated
-      #   uses: peter-evans/repository-dispatch@v1
-      #   with:
-      #     token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
-      #     repository: ${{ matrix.repo }}
-      #     event-type: target-updated
+      - name: dispatch target-updated
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: target-updated
