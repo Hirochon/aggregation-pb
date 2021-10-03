@@ -35,10 +35,10 @@ jobs:
           export PATH="$PATH:$(go env GOPATH)/bin"
       - name: env
         run: env
-      - name: install protoc
+      - name: get protoc
         run: |
-          go install -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
-          go install -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+          go get -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+          go get -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
       - name: exist protoc
         run: protoc
       - name: compile protocol-buffers
