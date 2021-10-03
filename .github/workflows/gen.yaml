@@ -26,6 +26,8 @@ jobs:
   pb:
     needs: setup
     runs-on: ubuntu-20.04
+    env:
+      PATH: $PATH:$(go env GOPATH)/bin
     steps:
       - uses: actions/checkout@v2
       - name: apt-get
@@ -38,8 +40,10 @@ jobs:
         run: |
           go get -v google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
           go get -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
-      - name: protoc path
-        run: export PATH="$PATH:$(go env GOPATH)/bin"
+      # - name: protoc path
+      #   run: export PATH="$PATH:$(go env GOPATH)/bin"
+      - name: pa
+        run: echo $PATH
       - name: go env gopath
         run: go env GOPATH
       - name: go env
