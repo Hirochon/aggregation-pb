@@ -44,10 +44,12 @@ jobs:
       - name: exist protoc
         run: protoc
       - name: compile protocol-buffers
-        env:
-          PATH: $PATH:$(go env GOPATH)/bin
-          GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH:$(go env GOPATH)/bin
+        # env:
+        #   PATH: $PATH:$(go env GOPATH)/bin
+        #   GITHUB_ACTION_PATH: $GITHUB_ACTION_PATH:$(go env GOPATH)/bin
         run: |
+          echo "$PATH:$(go env GOPATH)/bin" >> $PATH
+          echo "$GITHUB_PATH:$(go env GOPATH)/bin" >> $GITHUB_PATH
           env
           protoc --go_out=. --go_opt=paths=source_relative \
             --go-grpc_out=. --go-grpc_opt=paths=source_relative \
