@@ -28,6 +28,8 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+      - name: exist protoc
+        run: protoc
       - name: compile protocol-buffers
         run: make hello-gen
       - name: ls
