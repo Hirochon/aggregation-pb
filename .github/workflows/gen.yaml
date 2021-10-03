@@ -40,8 +40,8 @@ jobs:
           go get -v google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
       - name: protoc path
         run: |
-          echo "$GITHUB_PATH:$(go env GOPATH)/bin" >> $GITHUB_PATH
-          echo "$PATH:$(go env GOPATH)/bin" >> $PATH
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          echo "$(go env GOPATH)/bin" >> $PATH
       - name: exist protoc
         run: protoc
       - name: compile protocol-buffers
